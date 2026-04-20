@@ -34,75 +34,7 @@
 
 ---
 
-## 🤖 接入 AI 智能体
 
-Spider_XHS 天然适合作为 AI 运营 Agent 的数据底座，以下是几种典型用法：
-
-### 场景一：竞品笔记采集 + AI 改写 + 自动发布
-
-```python
-from apis.xhs_pc_apis import XHS_Apis
-from apis.xhs_creator_apis import XHS_Creator_Apis
-
-pc_api = XHS_Apis()
-creator_api = XHS_Creator_Apis()
-
-# 1. 采集竞品笔记
-success, msg, note = pc_api.get_note_info(note_url, cookies_str)
-
-# 2. 交给 AI 改写（接入任意大模型）
-rewritten = your_ai_agent(note['content'])   # GPT / Claude / Qwen / 本地模型
-
-# 3. 自动上传到创作者平台
-creator_api.post_note({
-    "title": rewritten['title'],
-    "desc": rewritten['desc'],
-    "media_type": "image",
-    "images": [...],
-    ...
-}, creator_cookies_str)
-```
-
-### 场景二：关键词监控 + AI 情报分析
-
-```python
-# 搜索指定关键词的最新笔记，交给 AI 分析趋势
-success, msg, notes = pc_api.search_some_note(query, require_num, cookies_str, ...)
-analysis = your_ai_agent(notes)
-```
-
-### 场景三：KOL 筛选 + 智能匹配
-
-```python
-from apis.xhs_pugongying_apis import PuGongYingAPI
-
-pgy = PuGongYingAPI()
-# 获取目标类目的 KOL 数据，交给 AI 评估匹配度
-kol_list = pgy.get_some_user(num=50, cookies=cookies)
-best_kols = your_ai_agent(kol_list, brand_profile)
-```
-
----
-
-## 🧩 Skills 支持
-
-当前项目已经支持基于 skills 的能力接入，既可以直接作为 `Spider_XHS` 的底层能力仓库使用，也可以通过标准化 skills 方式被上层 Agent 工具链引入。
-
-
----
-
-## 🎨 爬虫效果图
-
-### 处理后的所有用户
-
-### 某个用户所有的笔记
-
-### 某个笔记具体的内容
-
-### 保存的 Excel
-![image](https://github.com/user-attachments/assets/707f20ed-be27-4482-89b3-a5863bc360e7)
-
----
 
 ## 🛠️ 快速开始
 
@@ -191,27 +123,6 @@ Spider_XHS/
 
 ---
 
-## 🍥 更新日志
-
-| 日期 | 说明 |
-|------|------|
-| 23/08/09 | 首次提交 |
-| 23/09/13 | API 更改 params 增加两个字段，修复图片无法下载，修复部分页面无法访问报错 |
-| 23/09/16 | 修复较大视频编码问题，加入异常处理 |
-| 23/09/18 | 代码重构，加入失败重试 |
-| 23/09/19 | 新增下载搜索结果功能 |
-| 23/10/05 | 新增跳过已下载功能，获取更详细的笔记和用户信息 |
-| 23/10/08 | 上传至 PyPI，可通过 pip install 安装 |
-| 23/10/17 | 搜索下载新增排序方式（综合 / 热门 / 最新） |
-| 23/10/21 | 新增图形化界面，上传至 release v2.1.0 |
-| 23/10/28 | Fix Bug：修复搜索功能隐藏问题 |
-| 25/03/18 | 更新 API，修复部分问题 |
-| 25/06/07 | 更新 search 接口，区分视频和图集下载，新增创作者平台 API |
-| 25/07/15 | 更新 xs version56 & 小红书创作者接口 |
-| 26/04/11 | 重构创作者平台 API（图集 / 视频上传），新增蒲公英 KOL 数据 API，新增千帆分销商 API，签名算法升级至最新版 |
-
----
-
 ## 🧸 额外说明
 
 1. 感谢 Star ⭐ 和 Follow，项目会持续更新
@@ -219,6 +130,6 @@ Spider_XHS/
 
 ---
 
-## 💡 Acknowledgements
+## 💡 感谢
 
 本项目代码基于 [cv-cat/Spider_XHS](https://github.com/cv-cat/Spider_XHS) 仓库进行了定制化修改与封装。
