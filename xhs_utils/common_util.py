@@ -7,6 +7,11 @@ def load_env():
     cookies_str = os.getenv('COOKIES')
     return cookies_str
 
+def load_creator_env():
+    load_dotenv()
+    creator_cookies_str = os.getenv('CREATOR_COOKIES', '')
+    return creator_cookies_str
+
 def init():
     media_base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../datas/media_datas'))
     excel_base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../datas/excel_datas'))

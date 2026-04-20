@@ -30,3 +30,21 @@ env.bak/
 venv.bak/
 
 .env
+assist
+
+# App-unused / deprecated files
+batch_cleaner.py
+browser_delete.py
+main.py
+creator_login.py
+datas/
+apis/xhs_creator_apis.py
+apis/xhs_creator_login_apis.py
+apis/xhs_pc_login_apis.py
+apis/xhs_pugongying_apis.py
+apis/xhs_qianfan_apis.py
+xhs_utils/data_util.py
+xhs_utils/xhs_creator_util.py
+xhs_utils/xhs_pugongying_util.py
+xhs_utils/xhs_qianfan_util.py
+# auto_login.py  # (if we don't want to track it, but actually the user probably wants to track the app source)
